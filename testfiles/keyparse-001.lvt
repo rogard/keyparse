@@ -1,0 +1,19 @@
+\input regression-test.tex
+\documentclass{article}
+\usepackage{lex}
+\begin{document}
+\ExplSyntaxOn
+\START
+\lex_set:nnnnn{foo}{&}{#1}{{&}}{#1}
+\lex_set:nnnnn{foo}{>}{#1#2}{{#1}}{#2}
+\lex_set:nnnnn{foo}{+}{#1+#2}{{#1}}{#2}
+\box_new:N \l_tmp_box
+\hbox_set:Nn \l_tmp_box
+{\exp_args:Nx
+\tl_map_inline:nn
+{\lex_eval:nn{foo}{&>{123}+xyz+}}
+{\texttt{(\tl_to_str:n{#1})}}}
+\box_use:N \l_tmp_box
+\END
+\ExplSyntaxOff
+\end{document}

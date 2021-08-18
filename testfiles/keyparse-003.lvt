@@ -1,0 +1,17 @@
+\input regression-test.tex
+\documentclass{article}
+\usepackage{lex}
+\begin{document}
+\ExplSyntaxOn
+\START
+\box_new:N \l_tmp_box
+\hbox_set:Nn \l_tmp_box
+{\tl_set:Nx\l_tmpa_tl
+{\lex_eval:nn{argspec}{msotae{_^}r<]}}
+\exp_args:Nx
+\tl_map_inline:Nn
+\l_tmpa_tl
+{\texttt{(\tl_to_str:n{#1})}}}
+\box_use:N \l_tmp_box
+\ExplSyntaxOff
+\end{document}

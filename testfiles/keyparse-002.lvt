@@ -1,0 +1,16 @@
+\input regression-test.tex
+\documentclass{article}
+\usepackage{lex}
+\begin{document}
+\ExplSyntaxOn
+\START
+\box_new:N \l_tmp_box
+\hbox_set:Nn \l_tmp_box
+{  \lex_eval:nn{pair/first}
+  {>{}{Leslie~}
+    >{La}{mport~built~LaTeX~on~top~of~Donald~Knuth's~}
+    >{TeX}{.}}}
+\box_use:N \l_tmp_box
+%\END
+\ExplSyntaxOff
+\end{document}
